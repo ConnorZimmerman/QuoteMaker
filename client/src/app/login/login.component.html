@@ -1,0 +1,5 @@
+<form (submit)='login()'>
+  Username: <input type="text" name="name" [(ngModel)]= 'user.name'>
+  <input type="submit" name="Submit">
+</form>
+<h5 *ngIf="errorMsg.length > 0">{{errorMsg}}</h5>

@@ -1,0 +1,25 @@
+<a href="/logout">Logout</a>
+<h1>Quote Maker</h1>
+<h4>Welcome, {{userName}}!</h4>
+<form (submit)="AddQuote()">
+  Add quote:
+  <input type="text" name="quote" [(ngModel)]="quote.content">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+<h5 *ngIf="errorMsg.length > 0">{{errorMsg}}</h5>
+<table>
+  <tr>
+    <th>Quote</th>
+    <th>Made By</th>
+    <th>Likes</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let quote of allQuotes">
+    <td>{{quote['content']}}</td>
+    <td>{{quote['userName']}}</td>
+    <td>{{quote['Likes']}}</td>
+    <td *ngIf="userName == quote.userName"><a  href="/delete/{{quote._id}}">Delete</a></td>
+    <td *ngIf="userName != quote.userName"><a  href="/add_like/{{quote._id}}">Add Like</a></td>
+  </tr>
+</table>
